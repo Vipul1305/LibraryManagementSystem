@@ -1,13 +1,17 @@
 package com.backend.LibraryManagementSystem.Service;
 
+import com.backend.LibraryManagementSystem.DTO.BookDto;
 import com.backend.LibraryManagementSystem.DTO.BookRequestDto;
 import com.backend.LibraryManagementSystem.DTO.BookResponseDto;
 import com.backend.LibraryManagementSystem.Entity.Author;
 import com.backend.LibraryManagementSystem.Entity.Book;
+import com.backend.LibraryManagementSystem.Entity.LibraryCard;
 import com.backend.LibraryManagementSystem.Repository.AuthorRepository;
+import com.backend.LibraryManagementSystem.Repository.LibraryCardRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -24,7 +28,7 @@ public class BookService {
         book.setPrice(bookRequestDto.getPrice());
         book.setAuthor(author);
 
-        //store in author list
+        //store in author lists
         author.getBookList().add(book);
         authorRepository.save(author); // will save both book and author bcoz of bidirectional mapping
 

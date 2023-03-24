@@ -156,11 +156,12 @@ public class TransactionService {
         transaction.setBook(book);
         transaction.setCard(card);
 
-        //book.getTransactionList().add(transaction); //get save two time in transction
+        book.getTransactionList().add(transaction);
         card.getTransactionList().add(transaction);
         card.getBookList().remove(book);
 
-        libraryCardRepository.save(card);
+        //libraryCardRepository.save(card);//get save two time in transction
+        transactionRepository.save(transaction); // don't kown how parent got save
 
         //response
 
